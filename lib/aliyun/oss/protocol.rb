@@ -995,6 +995,8 @@ module Aliyun
         }
         (opts[:metas] || {})
           .each { |k, v| headers["x-oss-meta-#{k.to_s}"] = v.to_s }
+          
+        headers["x-oss-storage-class"] = opts[:storage] if opts[:storage]
 
         {
           :acl => 'x-oss-object-acl',
