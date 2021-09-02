@@ -304,6 +304,11 @@ module Aliyun
         obj
       end
 
+      # Restore object from Archive status
+      def restore_object(key)
+          @protocol.restore_object(name, key)
+      end
+
       # 更新Object的metas
       # @param key [String] Object的名字
       # @param metas [Hash] Object的meta

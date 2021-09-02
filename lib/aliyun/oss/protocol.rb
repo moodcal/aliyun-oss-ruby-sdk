@@ -1155,6 +1155,19 @@ module Aliyun
         )
       end
 
+      # Restore object from Archive status
+      # @param bucket_name [String] the bucket name
+      # @param object_name [String] the object name
+      def restore_object(bucket_name, object_name)
+        logger.debug("Begin restore object from archive status")
+
+        r = @http.post(
+          {:bucket => bucket_name, :object => object_name, :sub_res => {'restore' => nil}})
+
+        logger.debug("Done restore.")
+        r.code
+      end
+
       ##
       # Multipart uploading
       #
