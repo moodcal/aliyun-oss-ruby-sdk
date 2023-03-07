@@ -1171,14 +1171,14 @@ module Aliyun
       # Get object meta from Archive status
       # @param bucket_name [String] the bucket name
       # @param object_name [String] the object name
-      def get_object_meta(bucket_name, object_name)
+      def object_meta(bucket_name, object_name)
         logger.debug("Begin get object meta")
 
         r = @http.head(
           {:bucket => bucket_name, :object => object_name, :sub_res => {'objectMeta' => nil}})
 
         logger.debug("Done objectMeta.")
-        r.code
+        r.headers
       end
 
       ##

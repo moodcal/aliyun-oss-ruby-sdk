@@ -316,12 +316,15 @@ module Aliyun
 
       # Restore object from Archive status
       def get_object_meta(key)
+        meta = nil
         begin
-          @protocol.get_object_meta(name, key)
+          meta = @protocol.object_meta(name, key)
         rescue ServerError => e
           return e.http_code if e.http_code == 409
           raise e
         end
+
+        meta
       end
 
       # 更新Object的metas
